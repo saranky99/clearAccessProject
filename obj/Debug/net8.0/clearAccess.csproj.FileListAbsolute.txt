@@ -143,3 +143,13 @@ C:\Users\user1\Downloads\.net authentication\clearAccess\clearAccess\obj\Debug\n
 C:\Users\user1\Downloads\.net authentication\clearAccess\clearAccess\obj\Debug\net8.0\clearAccess.pdb
 C:\Users\user1\Downloads\.net authentication\clearAccess\clearAccess\obj\Debug\net8.0\clearAccess.genruntimeconfig.cache
 C:\Users\user1\Downloads\.net authentication\clearAccess\clearAccess\obj\Debug\net8.0\ref\clearAccess.dll
+C:\Users\user1\Downloads\.net authentication\clearAccess\clearAccess\bin\Debug\net8.0\Serilog.dll
+C:\Users\user1\Downloads\.net authentication\clearAccess\clearAccess\bin\Debug\net8.0\Serilog.AspNetCore.dll
+C:\Users\user1\Downloads\.net authentication\clearAccess\clearAccess\bin\Debug\net8.0\Serilog.Extensions.Hosting.dll
+C:\Users\user1\Downloads\.net authentication\clearAccess\clearAccess\bin\Debug\net8.0\Serilog.Extensions.Logging.dll
+C:\Users\user1\Downloads\.net authentication\clearAccess\clearAccess\bin\Debug\net8.0\Serilog.Formatting.Compact.dll
+C:\Users\user1\Downloads\.net authentication\clearAccess\clearAccess\bin\Debug\net8.0\Serilog.Settings.Configuration.dll
+C:\Users\user1\Downloads\.net authentication\clearAccess\clearAccess\bin\Debug\net8.0\Serilog.Sinks.Console.dll
+C:\Users\user1\Downloads\.net authentication\clearAccess\clearAccess\bin\Debug\net8.0\Serilog.Sinks.Debug.dll
+C:\Users\user1\Downloads\.net authentication\clearAccess\clearAccess\bin\Debug\net8.0\Serilog.Sinks.File.dll
+C:\Users\user1\Downloads\.net authentication\clearAccess\clearAccess\obj\Debug\net8.0\clearAccess.sourcelink.json

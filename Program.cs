@@ -3,7 +3,9 @@ using authProject.helper;
 using authProject.Repos;
 using authProject.Service;
 using AutoMapper;
+using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,7 +26,35 @@ var automapper = new MapperConfiguration(item => item.AddProfile(new AutoMapperH
 IMapper mapper = automapper.CreateMapper();
 builder.Services.AddSingleton(mapper);
 
+//add cross origin
+builder.Services.AddCors(p => p.AddDefaultPolicy( build =>
+{
+    build.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
+
+}));
+
+//rate limiing
+builder.Services.AddRateLimiter(_ => _.AddFixedWindowLimiter(policyName: "fixed window", options =>
+{
+    options.Window = TimeSpan.FromSeconds(10);
+    options.PermitLimit = 1;
+    options.QueueLimit = 0;
+    options.QueueProcessingOrder = System.Threading.RateLimiting.QueueProcessingOrder.OldestFirst;
+}).RejectionStatusCode=401);
+
+//register lgpath
+string logpath = builder.Configuration.GetSection("Logging:Logpath").Value;
+var _logger = new LoggerConfiguration()
+    .MinimumLevel.Information()
+    .MinimumLevel.Override("microsoft", Serilog.Events.LogEventLevel.Warning)
+    .Enrich.FromLogContext()
+    .WriteTo.File(logpath)
+    .CreateLogger();
+builder.Logging.AddSerilog(_logger);
+
 var app = builder.Build();
+
+app.UseRateLimiter();     //enable rate limiter
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -32,6 +62,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+//enable cross origin
+app.UseCors();
 
 app.UseHttpsRedirection();
 

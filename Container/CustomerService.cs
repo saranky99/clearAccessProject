@@ -6,6 +6,7 @@ using authProject.Service;
 using AutoMapper;
 using Azure;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace authProject.Container
@@ -16,10 +17,13 @@ namespace authProject.Container
          
         private readonly IMapper mapper;    //inject the mapper
 
-        public CustomerService(LearndataContext context, IMapper mapper)  //pass mapper parameter
+        private readonly ILogger<CustomerService> logger;  //inject the logger
+
+        public CustomerService(LearndataContext context, IMapper mapper, ILogger<CustomerService>logger)  //pass mapper parameter,pass logger parameter
         {
             this.context = context;
             this.mapper = mapper;
+            this.logger = logger;
         }
 
         public async Task<APIResponse> Create(CustomerModel data)
@@ -27,6 +31,7 @@ namespace authProject.Container
             APIResponse response = new APIResponse();
             try
             {
+                this.logger.LogInformation("Create Begins");      //log msg
                 Customer _customer = this.mapper.Map<CustomerModel,Customer>(data);
                 await this.context.Customers.AddAsync(_customer);
                 await this.context.SaveChangesAsync();
@@ -38,6 +43,7 @@ namespace authProject.Container
             {
                 response.ResponseCode = 400;
                 response.ErrorMessage = ex.Message;
+                this.logger.LogError(ex.Message,ex);  //log msg
 
             }
             return response;
