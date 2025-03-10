@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
-using authProject.Repos.Models;
+using clearAccess.Repos.Models;
 
-namespace authProject.Repos;
+namespace clearAccess.Repos;
 
 public partial class LearndataContext : DbContext
 {
@@ -17,6 +17,8 @@ public partial class LearndataContext : DbContext
     }
 
     public virtual DbSet<Customer> Customers { get; set; }
+
+    public virtual DbSet<TblRefreshtoken> TblRefreshtokens { get; set; }
 
     public virtual DbSet<TblUser> TblUsers { get; set; }
 

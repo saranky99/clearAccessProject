@@ -1,11 +1,13 @@
 ﻿using authProject.Model;
 using authProject.Service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
 
 namespace authProject.Controllers
 {
-   // [EnableRateLimiting("fixed window")]               //enable rate limiting
+    [Authorize]
+   [EnableRateLimiting("fixed window")]               //enable rate limiting
     [Route("api/[controller]")]
     [ApiController]
     public class CustomerController : Controller
@@ -28,7 +30,7 @@ namespace authProject.Controllers
             return Ok(data);
         }
 
-       // [DisableRateLimiting]              //disable the rate limiting
+        [DisableRateLimiting]              //disable the rate limiting
         [HttpGet("Getbycode")]
         public async Task<IActionResult> Getbycode(string code)
         {
@@ -39,6 +41,8 @@ namespace authProject.Controllers
             }
             return Ok(data);
         }
+
+        [AllowAnonymous]
 
         [HttpPost("Create")]
         public async Task<IActionResult> Create(CustomerModel _data)

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace authProject.Repos.Models;
+namespace clearAccess.Repos.Models;
 
 [Table("customer")]
 public partial class Customer
@@ -32,6 +32,4 @@ public partial class Customer
     public bool? IsActive { get; set; }
 
     public int? Taxcode { get; set; }
-
-    
 }

@@ -1,5 +1,5 @@
 ﻿using authProject.Model;
-using authProject.Repos.Models;
+using clearAccess.Repos.Models;
 using AutoMapper;
 
 namespace authProject.helper

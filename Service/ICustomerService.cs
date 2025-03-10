@@ -1,6 +1,6 @@
 ﻿using authProject.helper;
 using authProject.Model;
-using authProject.Repos.Models;
+using clearAccess.Repos.Models;
 
 namespace authProject.Service
 {

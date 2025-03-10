@@ -1,11 +1,13 @@
 using authProject.Container;
 using authProject.helper;
-using authProject.Repos;
+using clearAccess.Repos;
 using authProject.Service;
 using AutoMapper;
 using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
+using Microsoft.AspNetCore.Authentication;
+using clearAccess.helper;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +23,8 @@ builder.Services.AddTransient<ICustomerService, CustomerService>();
 //register database configuration
 builder.Services.AddDbContext<LearndataContext>(o => o.UseSqlServer(builder.Configuration.GetConnectionString("apicon")));
 
+//register basic authentication
+builder.Services.AddAuthentication("Basic Authentication").AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("Basic Authentication", null);
 //Register Autmapper
 var automapper = new MapperConfiguration(item => item.AddProfile(new AutoMapperHandler()));
 IMapper mapper = automapper.CreateMapper();
@@ -67,6 +71,9 @@ if (app.Environment.IsDevelopment())
 app.UseCors();
 
 app.UseHttpsRedirection();
+
+//enable basic authentication
+app.UseAuthentication();
 
 app.UseAuthorization();
 

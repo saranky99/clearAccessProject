@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace authProject.Repos.Models;
+namespace clearAccess.Repos.Models;
 
 [Table("tbl_user")]
 public partial class TblUser

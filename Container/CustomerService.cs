@@ -1,7 +1,7 @@
 ﻿using authProject.helper;
 using authProject.Model;
-using authProject.Repos;
-using authProject.Repos.Models;
+using clearAccess.Repos;
+using clearAccess.Repos.Models;
 using authProject.Service;
 using AutoMapper;
 using Azure;
