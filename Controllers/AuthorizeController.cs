@@ -71,7 +71,7 @@ namespace clearAccess.Controllers
             var _refreshtoken= await this.context.TblRefreshtokens.FirstOrDefaultAsync(item => item.Refreshtoken == token.RefreshToken );
             if (_refreshtoken != null)
             {
-                //generate token
+                
                 var tokenhandler = new JwtSecurityTokenHandler();
                 var tokenkey = Encoding.UTF8.GetBytes(this.jwtSettings.SecurityKey);
                 SecurityToken securityToken;
@@ -99,29 +99,22 @@ namespace clearAccess.Controllers
                             );
                         var _finaltoken = tokenhandler.WriteToken(_newtoken);
                         return Ok(new TokenResponse() { Token = _finaltoken, RefreshToken = await this.refresh.GenerateToken(username) });
-
                     }
                     else
                     {
                         return Unauthorized();
-
                     }
-
                 }
                 else 
                 {
                     return Unauthorized();
-                }
-
-               
+                }             
             }
             else
             {
                 return Unauthorized();
 
             }
-
-
 
         }
 
