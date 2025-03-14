@@ -30,6 +30,7 @@ namespace authProject.Controllers
             return Ok(data);
         }
 
+        [AllowAnonymous]
         [DisableRateLimiting]              //disable the rate limiting
         [HttpGet("Getbycode")]
         public async Task<IActionResult> Getbycode(string code)

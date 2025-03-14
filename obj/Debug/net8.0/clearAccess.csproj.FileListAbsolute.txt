@@ -153,3 +153,6 @@ C:\Users\user1\Downloads\.net authentication\clearAccess\clearAccess\obj\Debug\n
 C:\Users\user1\Downloads\.net authentication\clearAccess\clearAccess\obj\Debug\net8.0\clearAccess.pdb
 C:\Users\user1\Downloads\.net authentication\clearAccess\clearAccess\obj\Debug\net8.0\clearAccess.genruntimeconfig.cache
 C:\Users\user1\Downloads\.net authentication\clearAccess\clearAccess\obj\Debug\net8.0\ref\clearAccess.dll
+C:\Users\user1\Downloads\.net authentication\clearAccess\clearAccess\bin\Debug\net8.0\JWT.dll
+C:\Users\user1\Downloads\.net authentication\clearAccess\clearAccess\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\user1\Downloads\.net authentication\clearAccess\clearAccess\bin\Debug\net8.0\Newtonsoft.Json.dll
